@@ -1,0 +1,4 @@
+    --font-principal: space grotesk
+    --font-monospace: 'jetsbrain
+    --font-body: sora
+    --font-display: teko

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATOS TRANSPORTES — Logística e Transporte de Grãos</title>
+    <meta name="description"
+        content="Transportadora especializada no transporte de grãos em Mato Grosso. Logística eficiente, frota preparada e compromisso com o produtor rural.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <div class="container header__inner">
+
+            <a href="#home" class="logo" aria-label="MATOS TRANSPORTES — Página inicial">
+                Mato<span>s</span> Transportes
+            </a>
+
+            <nav class="nav-menu" id="nav" aria-label="Menu principal">
+                <a href="#sobre" class="nav__link">Sobre</a>
+                <a href="#servicos" class="nav__link">Serviços</a>
+                <a href="#frota" class="nav__link">Frota</a>
+                <a href="#atuacao" class="nav__link">Atuação</a>
+                <a href="#calculadora" class="nav__link">Simulador</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#cotacao" class="btn btn--accent">Cotação Rápida</a>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <section class="hero" id="home">
+        <div class="hero__bg" aria-hidden="true">
+            <video autoplay loop muted playsinline class="hero__video" style="background-color: #003223;">
+                <source src="/7183495-uhd_4096_2160_24fps.mp4" type="video/mp4">
+            </video>
+            <div class="hero__overlay"></div>
+        </div>
+
+        <div class="container hero__content reveal-up">
+            <h1 class="hero__title">Transporte <em>Inteligente</em><br>de Grãos e Safra</h1>
+
+            <div class="hero__track-bar">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <input type="text" placeholder="Rastreie sua carga ou consulte um pedido..."
+                    aria-label="Rastrear carga">
+                <button class="btn btn--accent">Rastrear</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="prova-social">
+        <div class="container">
+            <div class="stats-grid reveal-up">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15">0</span><span class="stat-suffix">M+</span>
+                    <p class="stat-desc">Toneladas Transportadas</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="320">0</span><span class="stat-suffix">+</span>
+                    <p class="stat-desc">Municípios Atendidos</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span>
+                    <p class="stat-desc">Pontualidade na Entrega</p>
+                </div>
+            </div>
+
+            <div class="testimonials-grid reveal-up">
+                <div class="testimonial-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p class="test-text">"Desde que mudamos nossa logística de safra para a Matos, reduzimos nossas
+                        perdas de transporte a quase zero. Confiança total."</p>
+                    <div class="test-author">
+                        <strong>Carlos Mendes</strong>
+                        <span>Fazenda Alvorada</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="test-stars">★★★★★</div>
+                    <p class="test-text">"Equipamentos sempre revisados e pontualidade britânica no porto. Uma extensão
+                        tecnológica do nosso agronegócio."</p>
+                    <div class="test-author">
+                        <strong>Juliana Torres</strong>
+                        <span>Diretora de Exportação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <div class="container sobre__inner reveal-up">
+            <div class="sobre__content">
+                <span class="section-label">Sobre a empresa</span>
+                <h2 class="section-title">Tradição e compromisso no transporte agrícola</h2>
+                <p class="sobre__desc">A MATOS TRANSPORTES é uma empresa especializada no transporte rodoviário de
+                    grãos. Atuamos com responsabilidade e segurança, valorizando a confiança do agronegócio e garantindo
+                    que sua safra chegue ao destino com total integridade.</p>
+                <div class="sobre__tags">
+                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Transporte de grãos</span>
+                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Atendimento regional</span>
+                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Frota preparada</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <header class="section-header reveal-up text-center">
+                <span class="section-label">O que fazemos</span>
+                <h2 class="section-title">Serviços especializados</h2>
+            </header>
+            <div class="servicos__grid">
+                <article class="serv-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="serv-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="serv-card__title">Transporte de Grãos</h3>
+                    <p class="serv-card__desc">Operação especializada com segurança operacional e cuidado da coleta ao
+                        destino.</p>
+                </article>
+
+                <article class="serv-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="serv-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z">
+                            </path>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="serv-card__title">Transporte de Soja</h3>
+                    <p class="serv-card__desc">Rotas estratégicas para o escoamento da soja produzida em Mato Grosso e
+                        regiões vizinhas.</p>
+                </article>
+
+                <article class="serv-card reveal-up" style="transition-delay: 0.3s;">
+                    <div class="serv-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9z"></path>
+                            <path d="M12 22c-4.97 0-9-4.03-9-9 4.97 0 9 4.03 9 9z"></path>
+                            <path d="M12 13c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z"></path>
+                            <line x1="12" y1="22" x2="12" y2="13"></line>
+                        </svg>
+                    </div>
+                    <h3 class="serv-card__title">Transporte de Milho</h3>
+                    <p class="serv-card__desc">Estrutura e experiência com foco na preservação da carga durante o
+                        percurso rodoviário.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="frota" id="frota">
+        <div class="container">
+            <header class="section-header reveal-up text-center">
+                <span class="section-label">Showroom</span>
+                <h2 class="section-title">Nossa Frota Especializada</h2>
+            </header>
+
+            <div class="frota-grid reveal-up">
+                <div class="frota-card">
+                    <img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?q=80&w=1418&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Caminhão Graneleiro" class="frota-img">
+                    <div class="frota-specs">
+                        <h3>Graneleiro 9 Eixos (Rodotrem)</h3>
+                        <p>Capacidade: <strong>Até 50 Toneladas</strong></p>
+                        <p>Ideal para: <strong>Soja, Milho, Fertilizantes</strong></p>
+                        <p>Tecnologia: <strong>Rastreamento Híbrido 24h</strong></p>
+                    </div>
+                </div>
+
+                <div class="frota-card">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1000&auto=format&fit=crop"
+                        alt="Caminhão Bitrem" class="frota-img">
+                    <div class="frota-specs">
+                        <h3>Bitrem Graneleiro 7 Eixos</h3>
+                        <p>Capacidade: <strong>Até 37 Toneladas</strong></p>
+                        <p>Ideal para: <strong>Rotas de média distância</strong></p>
+                        <p>Tecnologia: <strong>Telemetria Avançada</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mapa-atuacao" id="atuacao">
+        <div class="container mapa-atuacao__inner reveal-up">
+
+            <div class="mapa-atuacao__lista">
+                <span class="section-label section-label--light">Onde operamos</span>
+                <h2 class="section-title section-title--light">Nossa Área de Atuação</h2>
+                <p class="mapa-atuacao__desc">Com sede estratégica em Mato Grosso, conectamos as principais rotas do
+                    agronegócio aos maiores portos e polos industriais do país com inteligência em tempo real.</p>
+
+                <ul class="mapa-lista-simples">
+                    <li><span class="uf-tag">MT</span> <strong>Mato Grosso</strong></li>
+                    <li><span class="uf-tag">PR</span> <strong>Paraná</strong> </li>
+                    <li><span class="uf-tag">GO</span> <strong>Goiás</strong> </li>
+                    <li><span class="uf-tag">SP</span> <strong>São Paulo</strong> </li>
+                    <li><span class="uf-tag">MS</span> <strong>Mato Grosso do Sul</strong></li>
+                </ul>
+            </div>
+
+            <div class="mapa-atuacao__visual">
+                <div class="mapa-radar-container">
+                    <img src="/mapa.svg" alt="Mapa de atuação no Brasil" class="mapa-img-estatica">
+                    <div class="pulse-marker p-mt"></div>
+                    <div class="pulse-marker p-sp"></div>
+                    <div class="pulse-marker p-pr"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="calculadora" id="calculadora">
+        <div class="container">
+            <div class="calculadora-wrapper reveal-up">
+                <div class="calc-info">
+                    <span class="section-label">Simulação</span>
+                    <h2 class="section-title">Calculadora de Estimativa</h2>
+                    <p>Descubra rapidamente uma faixa de estimativa de valor para o seu transporte usando nossa
+                        calculadora inteligente. Valores reais dependem de variáveis do mercado atual e pedágios.</p>
+                </div>
+
+                <div class="calc-box">
+                    <div class="calc-row">
+                        <div class="calc-labels">
+                            <label>Carga Estimada (Toneladas)</label>
+                            <span id="valPeso" class="calc-value">37 Ton</span>
+                        </div>
+                        <input type="range" id="calcPeso" min="10" max="200" value="37" step="1" class="calc-slider">
+                    </div>
+
+                    <div class="calc-row">
+                        <div class="calc-labels">
+                            <label>Distância Aproximada (Km)</label>
+                            <span id="valDistancia" class="calc-value">500 Km</span>
+                        </div>
+                        <input type="range" id="calcDistancia" min="50" max="3000" value="500" step="10"
+                            class="calc-slider">
+                    </div>
+
+                    <div class="calc-result">
+                        <p>Estimativa de Custo (Frete Seco):</p>
+                        <h3 id="valTotal">R$ 5.500 - R$ 6.200</h3>
+                    </div>
+
+                    <a href="#cotacao" class="btn btn--accent btn--full" style="margin-top: 20px;">Solicitar Cotação
+                        Exata</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cotacao" id="cotacao">
+        <div class="container cotacao__inner">
+            <div class="cotacao__info reveal-up">
+                <span class="section-label">Cotação Completa</span>
+                <h2 class="section-title">Solicite sua cotação</h2>
+                <p class="cotacao__desc">Preencha os detalhes da sua carga. Nosso time de logística analisará as rotas e
+                    veículos ideais e retornará o mais rápido possível.</p>
+            </div>
+
+            <form class="cotacao__form reveal-up" id="cotacaoForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group"><label for="nome">Nome Completo *</label><input type="text" id="nome"
+                            placeholder="Seu nome ou responsável" required></div>
+                    <div class="form-group"><label for="empresa">Empresa / Fazenda</label><input type="text"
+                            id="empresa" placeholder="Razão social"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group"><label for="telefone">Telefone / WhatsApp *</label><input type="tel"
+                            id="telefone" placeholder="(00) 00000-0000" required></div>
+                    <div class="form-group"><label for="email">E-mail corporativo</label><input type="email" id="email"
+                            placeholder="contato@empresa.com"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="origem">Local de Coleta (Origem) *</label>
+                        <div class="input-with-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <input type="text" id="origem" placeholder="Cidade - UF" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="destino">Local de Entrega (Destino) *</label>
+                        <div class="input-with-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <input type="text" id="destino" placeholder="Cidade - UF" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipoCarga">Tipo de Produto *</label>
+                        <select id="tipoCarga" required>
+                            <option value="">Selecione...</option>
+                            <option value="Soja">Soja em Grãos</option>
+                            <option value="Milho">Milho em Grãos</option>
+                            <option value="Fertilizantes">Fertilizantes / Adubos</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label for="pesoVolume">Peso / Volume Estimado</label><input type="text"
+                            id="pesoVolume" placeholder="Ex: 500 toneladas..."></div>
+                </div>
+
+                <div class="form-actions" style="margin-top: 15px;">
+                    <button type="submit" class="btn btn--dark btn--full">Enviar Solicitação Completa</button>
+                </div>
+                <div class="form-success" id="formSuccess" hidden>
+                    <p>Solicitação enviada com sucesso! Em breve um consultor entrará em contato.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__slogan">Seu parceiro<br>de confiança na logística</div>
+                <div class="footer__links-grid">
+                    <nav class="footer__nav-col">
+                        <h4>Links Rápidos</h4>
+                        <ul>
+                            <li><a href="#sobre">Sobre nós</a></li>
+                            <li><a href="#servicos">Serviços</a></li>
+                            <li><a href="#cotacao">Cotação</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="footer__nav-col">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">Termos de Serviço</a></li>
+                            <li><a href="#">Política de Cookies</a></li>
+                        </ul>
+                    </nav>
+                    <div class="footer__nav-col">
+                        <h4>Fale Conosco</h4>
+                        <ul>
+                            <li>+55 (65) 0000-0000</li>
+                            <li>contato@matostransportes.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__huge-logo">Mato<span>s</span> Transportes</div>
+
+            <div class="footer__bottom">
+                <p>Copyright © 2026 Matos Transportes. Todos os direitos reservados.</p>
+                <a href="#" class="footer__privacy">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="wpp-float"
+        aria-label="Falar pelo WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.855L0 24l6.335-1.509A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.918 0-3.714-.497-5.273-1.369l-.379-.221-3.927.936.998-3.826-.248-.395A9.961 9.961 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+        </svg>
+        <span class="wpp-float__tooltip">Fale conosco!</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
