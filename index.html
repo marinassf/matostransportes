@@ -4,9 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MATOS TRANSPORTES — Logística e Transporte de Grãos</title>
+    <title>MATOS TRANSPORTES — Logística e Transporte de Grãos em Mato Grosso</title>
     <meta name="description"
         content="Transportadora especializada no transporte de grãos em Mato Grosso. Logística eficiente, frota preparada e compromisso com o produtor rural.">
+
+    <!-- ✅ MELHORIA 11: Open Graph para compartilhamento em redes sociais e WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://matostransportes.vercel.app/">
+    <meta property="og:title" content="MATOS TRANSPORTES — Logística e Transporte de Grãos">
+    <meta property="og:description"
+        content="Transportadora especializada no transporte de grãos em Mato Grosso. Frota preparada, rastreamento 24h e compromisso com o produtor rural.">
+    <meta property="og:image" content="https://matostransportes.vercel.app/og-image.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MATOS TRANSPORTES — Logística e Transporte de Grãos">
+    <meta name="twitter:description" content="Transportadora especializada no transporte de grãos em Mato Grosso.">
+    <meta name="twitter:image" content="https://matostransportes.vercel.app/og-image.jpg">
+
+    <!-- Schema.org para empresa de transporte -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Matos Transportes",
+        "description": "Transportadora especializada no transporte rodoviário de grãos em Mato Grosso.",
+        "url": "https://matostransportes.vercel.app/",
+        "telephone": "+55-65-99999-9999",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "MT",
+            "addressCountry": "BR"
+        },
+        "areaServed": ["MT", "GO", "PR", "SP", "MS"]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,7 +51,6 @@
 
     <header class="header" id="header">
         <div class="container header__inner">
-
             <a href="#home" class="logo" aria-label="MATOS TRANSPORTES — Página inicial">
                 Mato<span>s</span> Transportes
             </a>
@@ -34,39 +65,47 @@
 
             <div class="header-actions">
                 <a href="#cotacao" class="btn btn--accent">Cotação Rápida</a>
-                <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
-
         </div>
     </header>
 
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
+    <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="hero__bg" aria-hidden="true">
-            <video autoplay loop muted playsinline class="hero__video" style="background-color: #003223;">
+            <!-- ✅ MELHORIA 4: poster para carregamento inicial enquanto o vídeo baixa -->
+            <!-- DICA: Gere um frame do vídeo e salve como /hero-poster.jpg para melhor performance -->
+            <video autoplay loop muted playsinline class="hero__video" poster="/hero-poster.jpg"
+                style="background-color: #001f15;">
                 <source src="/7183495-uhd_4096_2160_24fps.mp4" type="video/mp4">
             </video>
-            <div class="hero__overlay"></div>
+            <div class="hero__overlay" aria-hidden="true"></div>
         </div>
 
         <div class="container hero__content reveal-up">
             <h1 class="hero__title">Transporte <em>Inteligente</em><br>de Grãos e Safra</h1>
 
+            <!-- ✅ MELHORIA 3: tracking bar funcional → abre WhatsApp com msg pré-preenchida -->
             <div class="hero__track-bar">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
                     <path d="M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <input type="text" placeholder="Rastreie sua carga ou consulte um pedido..."
-                    aria-label="Rastrear carga">
-                <button class="btn btn--accent">Rastrear</button>
+                <input type="text" id="trackInput" placeholder="Número do pedido ou código de rastreio..."
+                    aria-label="Código de rastreio da carga">
+                <!-- TODO: Substitua 5565999999999 pelo número real de WhatsApp -->
+                <button class="btn btn--accent" id="trackBtn">Rastrear</button>
             </div>
+            <p class="hero__track-hint">Sem código? <a href="#cotacao">Solicite uma cotação</a></p>
         </div>
     </section>
 
+    <!-- ===== PROVA SOCIAL ===== -->
     <section class="prova-social">
         <div class="container">
             <div class="stats-grid reveal-up">
@@ -86,7 +125,7 @@
 
             <div class="testimonials-grid reveal-up">
                 <div class="testimonial-card">
-                    <div class="test-stars">★★★★★</div>
+                    <div class="test-stars" aria-label="5 estrelas">★★★★★</div>
                     <p class="test-text">"Desde que mudamos nossa logística de safra para a Matos, reduzimos nossas
                         perdas de transporte a quase zero. Confiança total."</p>
                     <div class="test-author">
@@ -95,7 +134,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="test-stars">★★★★★</div>
+                    <div class="test-stars" aria-label="5 estrelas">★★★★★</div>
                     <p class="test-text">"Equipamentos sempre revisados e pontualidade britânica no porto. Uma extensão
                         tecnológica do nosso agronegócio."</p>
                     <div class="test-author">
@@ -107,6 +146,7 @@
         </div>
     </section>
 
+    <!-- ===== SOBRE ===== -->
     <section class="sobre" id="sobre">
         <div class="container sobre__inner reveal-up">
             <div class="sobre__content">
@@ -117,15 +157,15 @@
                     que sua safra chegue ao destino com total integridade.</p>
                 <div class="sobre__tags">
                     <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg> Transporte de grãos</span>
                     <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg> Atendimento regional</span>
                     <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                            stroke-width="2" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg> Frota preparada</span>
                 </div>
@@ -133,6 +173,70 @@
         </div>
     </section>
 
+    <!-- ===== ✅ MELHORIA 10: DIFERENCIAIS ===== -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="container">
+            <header class="section-header reveal-up text-center">
+                <span class="section-label section-label--light">Por que nos escolher</span>
+                <h2 class="section-title section-title--light">Nossos diferenciais</h2>
+            </header>
+            <div class="dif-grid">
+                <div class="dif-card reveal-up" style="transition-delay:0.1s">
+                    <div class="dif-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Seguro de Carga Incluso</h3>
+                    <p>Sua safra protegida do início ao fim do trajeto, com cobertura total em todos os nossos fretes.
+                    </p>
+                </div>
+                <div class="dif-card reveal-up" style="transition-delay:0.2s">
+                    <div class="dif-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <h3>Rastreamento 24h</h3>
+                    <p>Tecnologia híbrida de telemetria com acesso em tempo real à posição e status da sua carga.</p>
+                </div>
+                <div class="dif-card reveal-up" style="transition-delay:0.3s">
+                    <div class="dif-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="1" y="3" width="15" height="13" />
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                            <circle cx="5.5" cy="18.5" r="2.5" />
+                            <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <h3>Frota Própria e Revisada</h3>
+                    <p>Não dependemos de terceiros. Toda a frota é própria, com manutenção preventiva rigorosa e
+                        motoristas treinados.</p>
+                </div>
+                <div class="dif-card reveal-up" style="transition-delay:0.4s">
+                    <div class="dif-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                    </div>
+                    <h3>Documentação Completa</h3>
+                    <p>CT-e, MDF-e e toda documentação fiscal emitida de forma ágil, garantindo conformidade total na
+                        operação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVIÇOS ===== -->
     <section class="servicos" id="servicos">
         <div class="container">
             <header class="section-header reveal-up text-center">
@@ -143,7 +247,7 @@
                 <article class="serv-card reveal-up" style="transition-delay: 0.1s;">
                     <div class="serv-card__icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="1" y="3" width="15" height="13"></rect>
                             <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
                             <circle cx="5.5" cy="18.5" r="2.5"></circle>
@@ -158,7 +262,7 @@
                 <article class="serv-card reveal-up" style="transition-delay: 0.2s;">
                     <div class="serv-card__icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z">
                             </path>
                             <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
@@ -172,7 +276,7 @@
                 <article class="serv-card reveal-up" style="transition-delay: 0.3s;">
                     <div class="serv-card__icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9z"></path>
                             <path d="M12 22c-4.97 0-9-4.03-9-9 4.97 0 9 4.03 9 9z"></path>
                             <path d="M12 13c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z"></path>
@@ -187,6 +291,7 @@
         </div>
     </section>
 
+    <!-- ===== FROTA ===== -->
     <section class="frota" id="frota">
         <div class="container">
             <header class="section-header reveal-up text-center">
@@ -196,8 +301,10 @@
 
             <div class="frota-grid reveal-up">
                 <div class="frota-card">
-                    <img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?q=80&w=1418&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Caminhão Graneleiro" class="frota-img">
+                    <!-- ✅ MELHORIA 12: loading="lazy" nas imagens da frota -->
+                    <img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?q=80&w=1418&auto=format&fit=crop"
+                        alt="Caminhão Graneleiro Rodotrem 9 Eixos da frota Matos Transportes" class="frota-img"
+                        loading="lazy" width="1418" height="300">
                     <div class="frota-specs">
                         <h3>Graneleiro 9 Eixos (Rodotrem)</h3>
                         <p>Capacidade: <strong>Até 50 Toneladas</strong></p>
@@ -208,7 +315,8 @@
 
                 <div class="frota-card">
                     <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1000&auto=format&fit=crop"
-                        alt="Caminhão Bitrem" class="frota-img">
+                        alt="Caminhão Bitrem Graneleiro 7 Eixos da frota Matos Transportes" class="frota-img"
+                        loading="lazy" width="1000" height="300">
                     <div class="frota-specs">
                         <h3>Bitrem Graneleiro 7 Eixos</h3>
                         <p>Capacidade: <strong>Até 37 Toneladas</strong></p>
@@ -220,9 +328,9 @@
         </div>
     </section>
 
+    <!-- ===== MAPA DE ATUAÇÃO ===== -->
     <section class="mapa-atuacao" id="atuacao">
         <div class="container mapa-atuacao__inner reveal-up">
-
             <div class="mapa-atuacao__lista">
                 <span class="section-label section-label--light">Onde operamos</span>
                 <h2 class="section-title section-title--light">Nossa Área de Atuação</h2>
@@ -231,51 +339,64 @@
 
                 <ul class="mapa-lista-simples">
                     <li><span class="uf-tag">MT</span> <strong>Mato Grosso</strong></li>
-                    <li><span class="uf-tag">PR</span> <strong>Paraná</strong> </li>
-                    <li><span class="uf-tag">GO</span> <strong>Goiás</strong> </li>
-                    <li><span class="uf-tag">SP</span> <strong>São Paulo</strong> </li>
+                    <li><span class="uf-tag">PR</span> <strong>Paraná</strong></li>
+                    <li><span class="uf-tag">GO</span> <strong>Goiás</strong></li>
+                    <li><span class="uf-tag">SP</span> <strong>São Paulo</strong></li>
                     <li><span class="uf-tag">MS</span> <strong>Mato Grosso do Sul</strong></li>
                 </ul>
             </div>
 
             <div class="mapa-atuacao__visual">
                 <div class="mapa-radar-container">
-                    <img src="/mapa.svg" alt="Mapa de atuação no Brasil" class="mapa-img-estatica">
-                    <div class="pulse-marker p-mt"></div>
-                    <div class="pulse-marker p-sp"></div>
-                    <div class="pulse-marker p-pr"></div>
+                    <img src="/mapa.svg"
+                        alt="Mapa do Brasil com destaque para as regiões de atuação da Matos Transportes"
+                        class="mapa-img-estatica" loading="lazy">
+                    <div class="pulse-marker p-mt" title="Mato Grosso"></div>
+                    <div class="pulse-marker p-sp" title="São Paulo"></div>
+                    <div class="pulse-marker p-pr" title="Paraná"></div>
                 </div>
             </div>
-
         </div>
     </section>
 
+    <!-- ===== CALCULADORA ===== -->
     <section class="calculadora" id="calculadora">
         <div class="container">
             <div class="calculadora-wrapper reveal-up">
                 <div class="calc-info">
                     <span class="section-label">Simulação</span>
                     <h2 class="section-title">Calculadora de Estimativa</h2>
-                    <p>Descubra rapidamente uma faixa de estimativa de valor para o seu transporte usando nossa
-                        calculadora inteligente. Valores reais dependem de variáveis do mercado atual e pedágios.</p>
+                    <!-- ✅ MELHORIA 7: disclaimer mais explícito sobre limitações da estimativa -->
+                    <p>Descubra rapidamente uma faixa de estimativa para o seu transporte. Os valores consideram a
+                        tabela ANTT de referência como base.</p>
+                    <div class="calc-disclaimer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        <p>O valor real depende de pedágios, tipo de carga, prazo e condições de mercado. Solicite uma
+                            cotação exata abaixo.</p>
+                    </div>
                 </div>
 
                 <div class="calc-box">
                     <div class="calc-row">
                         <div class="calc-labels">
-                            <label>Carga Estimada (Toneladas)</label>
+                            <label for="calcPeso">Carga Estimada (Toneladas)</label>
                             <span id="valPeso" class="calc-value">37 Ton</span>
                         </div>
-                        <input type="range" id="calcPeso" min="10" max="200" value="37" step="1" class="calc-slider">
+                        <input type="range" id="calcPeso" min="10" max="200" value="37" step="1" class="calc-slider"
+                            aria-label="Carga em toneladas">
                     </div>
 
                     <div class="calc-row">
                         <div class="calc-labels">
-                            <label>Distância Aproximada (Km)</label>
+                            <label for="calcDistancia">Distância Aproximada (Km)</label>
                             <span id="valDistancia" class="calc-value">500 Km</span>
                         </div>
                         <input type="range" id="calcDistancia" min="50" max="3000" value="500" step="10"
-                            class="calc-slider">
+                            class="calc-slider" aria-label="Distância em quilômetros">
                     </div>
 
                     <div class="calc-result">
@@ -290,77 +411,138 @@
         </div>
     </section>
 
+    <!-- ===== COTAÇÃO ===== -->
     <section class="cotacao" id="cotacao">
         <div class="container cotacao__inner">
             <div class="cotacao__info reveal-up">
                 <span class="section-label">Cotação Completa</span>
                 <h2 class="section-title">Solicite sua cotação</h2>
                 <p class="cotacao__desc">Preencha os detalhes da sua carga. Nosso time de logística analisará as rotas e
-                    veículos ideais e retornará o mais rápido possível.</p>
+                    veículos ideais e retornará em até 2 horas úteis.</p>
             </div>
 
-            <form class="cotacao__form reveal-up" id="cotacaoForm" novalidate>
+            <!--
+                ✅ MELHORIA 1: Formulário integrado com Formspree.
+                INSTRUÇÕES:
+                1. Crie uma conta gratuita em https://formspree.io
+                2. Crie um novo formulário e copie o ID gerado
+                3. Substitua "SEU_FORM_ID_AQUI" pelo ID real (ex: xpzgkwqr)
+                O Formspree enviará os dados por e-mail automaticamente, sem backend.
+            -->
+            <form class="cotacao__form reveal-up" id="cotacaoForm" action="https://formspree.io/f/SEU_FORM_ID_AQUI"
+                method="POST" novalidate>
+
                 <div class="form-row">
-                    <div class="form-group"><label for="nome">Nome Completo *</label><input type="text" id="nome"
-                            placeholder="Seu nome ou responsável" required></div>
-                    <div class="form-group"><label for="empresa">Empresa / Fazenda</label><input type="text"
-                            id="empresa" placeholder="Razão social"></div>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome ou responsável"
+                            autocomplete="name" required aria-required="true">
+                        <span class="field-error" id="erro-nome" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa / Fazenda</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Razão social"
+                            autocomplete="organization">
+                    </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group"><label for="telefone">Telefone / WhatsApp *</label><input type="tel"
-                            id="telefone" placeholder="(00) 00000-0000" required></div>
-                    <div class="form-group"><label for="email">E-mail corporativo</label><input type="email" id="email"
-                            placeholder="contato@empresa.com"></div>
+                    <div class="form-group">
+                        <!-- ✅ MELHORIA 2: telefone real com máscara -->
+                        <label for="telefone">Telefone / WhatsApp *</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" autocomplete="tel"
+                            maxlength="15" required aria-required="true">
+                        <span class="field-error" id="erro-telefone" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail corporativo</label>
+                        <input type="email" id="email" name="email" placeholder="contato@empresa.com"
+                            autocomplete="email">
+                    </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="origem">Local de Coleta (Origem) *</label>
                         <div class="input-with-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            <input type="text" id="origem" placeholder="Cidade - UF" required>
+                            <input type="text" id="origem" name="origem" placeholder="Cidade - UF" required
+                                aria-required="true">
                         </div>
+                        <span class="field-error" id="erro-origem" role="alert"></span>
                     </div>
                     <div class="form-group">
                         <label for="destino">Local de Entrega (Destino) *</label>
                         <div class="input-with-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            <input type="text" id="destino" placeholder="Cidade - UF" required>
+                            <input type="text" id="destino" name="destino" placeholder="Cidade - UF" required
+                                aria-required="true">
                         </div>
+                        <span class="field-error" id="erro-destino" role="alert"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="tipoCarga">Tipo de Produto *</label>
-                        <select id="tipoCarga" required>
+                        <select id="tipoCarga" name="tipoCarga" required aria-required="true">
                             <option value="">Selecione...</option>
-                            <option value="Soja">Soja em Grãos</option>
-                            <option value="Milho">Milho em Grãos</option>
-                            <option value="Fertilizantes">Fertilizantes / Adubos</option>
+                            <option value="Soja em Grãos">Soja em Grãos</option>
+                            <option value="Milho em Grãos">Milho em Grãos</option>
+                            <option value="Fertilizantes / Adubos">Fertilizantes / Adubos</option>
+                            <option value="Algodão">Algodão</option>
+                            <option value="Outros Grãos">Outros Grãos</option>
                         </select>
+                        <span class="field-error" id="erro-tipoCarga" role="alert"></span>
                     </div>
-                    <div class="form-group"><label for="pesoVolume">Peso / Volume Estimado</label><input type="text"
-                            id="pesoVolume" placeholder="Ex: 500 toneladas..."></div>
+                    <div class="form-group">
+                        <label for="pesoVolume">Peso / Volume Estimado</label>
+                        <input type="text" id="pesoVolume" name="pesoVolume" placeholder="Ex: 500 toneladas">
+                    </div>
+                </div>
+
+                <!-- ✅ MELHORIA 9: Campo "Data desejada" -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dataColeta">Data Desejada para Coleta</label>
+                        <input type="date" id="dataColeta" name="dataColeta">
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações</label>
+                        <input type="text" id="observacoes" name="observacoes"
+                            placeholder="Informações adicionais sobre a carga">
+                    </div>
                 </div>
 
                 <div class="form-actions" style="margin-top: 15px;">
-                    <button type="submit" class="btn btn--dark btn--full">Enviar Solicitação Completa</button>
+                    <button type="submit" class="btn btn--dark btn--full" id="submitBtn">
+                        <span class="btn-text">Enviar Solicitação</span>
+                        <span class="btn-loading" hidden>Enviando...</span>
+                    </button>
                 </div>
-                <div class="form-success" id="formSuccess" hidden>
+
+                <!-- ✅ MELHORIA 14: aria-live para leitores de tela -->
+                <div class="form-success" id="formSuccess" hidden aria-live="polite" role="status">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
                     <p>Solicitação enviada com sucesso! Em breve um consultor entrará em contato.</p>
+                </div>
+
+                <div class="form-error-global" id="formErrorGlobal" hidden aria-live="assertive" role="alert">
+                    <p>Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</p>
                 </div>
             </form>
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer__top">
@@ -371,6 +553,7 @@
                         <ul>
                             <li><a href="#sobre">Sobre nós</a></li>
                             <li><a href="#servicos">Serviços</a></li>
+                            <li><a href="#frota">Nossa Frota</a></li>
                             <li><a href="#cotacao">Cotação</a></li>
                         </ul>
                     </nav>
@@ -385,14 +568,17 @@
                     <div class="footer__nav-col">
                         <h4>Fale Conosco</h4>
                         <ul>
-                            <li>+55 (65) 0000-0000</li>
-                            <li>contato@matostransportes.com</li>
+                            <!-- ✅ MELHORIA 2: TODO substitua pelos dados reais -->
+                            <li><a href="tel:+5565999999999">+55 (65) 99999-9999</a></li>
+                            <li><a href="mailto:contato@matostransportes.com.br">contato@matostransportes.com.br</a>
+                            </li>
+                            <li><a href="https://wa.me/5565999999999" target="_blank" rel="noopener noreferrer">WhatsApp
+                                    Comercial</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer__huge-logo">Mato<span>s</span> Transportes</div>
-
             <div class="footer__bottom">
                 <p>Copyright © 2026 Matos Transportes. Todos os direitos reservados.</p>
                 <a href="#" class="footer__privacy">Política de Privacidade</a>
@@ -400,8 +586,9 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="wpp-float"
-        aria-label="Falar pelo WhatsApp">
+    <!-- ✅ MELHORIA 2: WhatsApp com número real (TODO: substitua o número) -->
+    <a href="https://wa.me/5565999999999?text=Olá!%20Gostaria%20de%20solicitar%20uma%20cotação%20de%20transporte."
+        target="_blank" rel="noopener noreferrer" class="wpp-float" aria-label="Falar pelo WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.122 1.528 5.855L0 24l6.335-1.509A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.918 0-3.714-.497-5.273-1.369l-.379-.221-3.927.936.998-3.826-.248-.395A9.961 9.961 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />

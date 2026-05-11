@@ -1,8 +1,6 @@
 /* ================================================================
-   IMPORTAÇÃO DAS FONTES LOCAIS (Arquivos Baixados)
+   FONTES LOCAIS
    ================================================================ */
-
-/* 1. Space Grotesk (Títulos, Botões, Logo) */
 @font-face {
     font-family: 'Space Grotesk';
     src: url('./fonts/SpaceGrotesk-Regular.woff2') format('woff2'),
@@ -21,17 +19,15 @@
     font-display: swap;
 }
 
-/* 2. JetBrains Mono (Tags, Números Técnicos, Labels) */
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('./fonts/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+        url('./fonts/JetBrainsMono-Medium.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
-/* 3. Sora (Textos longos, Parágrafos) */
 @font-face {
     font-family: 'Sora';
     src: url('./fonts/Sora-Regular.woff2') format('woff2'),
@@ -44,13 +40,12 @@
 @font-face {
     font-family: 'Sora';
     src: url('./fonts/Sora-SemiBold.woff2') format('woff2'),
-        url('/fonts/Sora-Regular.ttf') format('truetype');
+        url('./fonts/Sora-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
 
-/* 4. Teko (Textos Gigantes de Impacto) */
 @font-face {
     font-family: 'Teko';
     src: url('./fonts/Teko-Regular.woff2') format('woff2'),
@@ -61,20 +56,18 @@
 }
 
 /* ================================================================
-   VARIÁVEIS E RESET (Cores Atualizadas)
+   VARIÁVEIS E RESET
    ================================================================ */
 :root {
     --cor-fundo: #F4F4F6;
     --cor-fundo-alt: #FFFFFF;
     --cor-texto: #1A1A1A;
     --cor-texto-mutado: #666666;
-    
-    /* Novas cores solicitadas */
-    --cor-primaria: #003223; /* Verde Escuro */
-    --cor-accent: #8cc850;   /* Verde Claro / Limão */
-    --cor-accent-hover: #78ab44; 
-    
+    --cor-primaria: #003223;
+    --cor-accent: #8cc850;
+    --cor-accent-hover: #78ab44;
     --cor-borda: #E2E2E2;
+    --cor-erro: #C0392B;
 
     --font-principal: 'Space Grotesk', sans-serif;
     --font-monospace: 'JetBrains Mono', monospace;
@@ -92,6 +85,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -132,6 +129,41 @@ button {
 }
 
 /* ================================================================
+   CORREÇÃO: garante que [hidden] nunca seja sobrescrito por display do CSS
+   ================================================================ */
+[hidden] {
+    display: none !important;
+}
+
+/* ================================================================
+   ✅ MELHORIA 13: prefers-reduced-motion
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal-up {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero__video {
+        display: none;
+    }
+
+    .pulse-marker,
+    .wpp-float::after {
+        animation: none !important;
+    }
+}
+
+/* ================================================================
    BOTÕES E TAGS
    ================================================================ */
 .btn {
@@ -141,6 +173,7 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     padding: 14px 32px;
     border-radius: var(--radius-pill);
     letter-spacing: 0.5px;
@@ -169,6 +202,12 @@ button {
     box-shadow: 0 10px 20px rgba(0, 50, 35, 0.2);
 }
 
+.btn--dark:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .btn--full {
     width: 100%;
 }
@@ -187,7 +226,7 @@ button {
 }
 
 /* ================================================================
-   HEADER PILL (Glassmorphism Moderno)
+   ✅ MELHORIA — HEADER com melhor legibilidade
    ================================================================ */
 .header {
     position: fixed;
@@ -200,19 +239,21 @@ button {
     z-index: 1000;
     border-radius: var(--radius-pill);
     transition: var(--transition-smooth);
-    
-    /* Efeito Vidro Escuro */
-    background: rgba(0, 50, 35, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Fundo verde mais opaco para garantir legibilidade sobre o vídeo */
+    background: rgba(0, 40, 25, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Sombra sutil para separar do vídeo */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .header.scrolled {
-    background: rgba(0, 50, 35, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(0, 50, 35, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     border-color: transparent;
     top: 15px;
 }
@@ -234,6 +275,8 @@ button {
     color: #FFF;
     letter-spacing: -0.5px;
     white-space: nowrap;
+    /* ✅ Sombra de texto para destacar do vídeo */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .logo span {
@@ -255,12 +298,31 @@ button {
     font-size: 0.95rem;
     color: #FFF;
     transition: var(--transition-smooth);
-    opacity: 0.8;
+    opacity: 0.9;
+    /* ✅ Sombra de texto para legibilidade sobre vídeo */
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--cor-accent);
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
 .nav__link:hover {
     opacity: 1;
     color: var(--cor-accent);
+}
+
+.nav__link:hover::after {
+    width: 100%;
 }
 
 .header-actions {
@@ -279,7 +341,7 @@ button {
 }
 
 /* ================================================================
-   HERO COM VÍDEO (Contraste melhorado sem sujeira visual)
+   ✅ MELHORIA — HERO com overlay e legibilidade corrigidos
    ================================================================ */
 .hero {
     position: relative;
@@ -295,7 +357,9 @@ button {
 .hero__bg {
     position: absolute;
     inset: 0;
-    z-index: -2;
+    z-index: 0;
+    background-color: #001f15;
+    /* fallback caso o vídeo não carregue */
 }
 
 .hero__video {
@@ -304,19 +368,31 @@ button {
     object-fit: cover;
 }
 
-/* Novo overlay em gradiente refinado que escurece do topo e laterais pro centro */
+/* ✅ Overlay melhorado: gradiente mais forte para garantir legibilidade do texto */
 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0, 50, 35, 0.85) 0%, rgba(0, 50, 35, 0.4) 50%, rgba(0, 50, 35, 0.85) 100%);
-    z-index: -1;
+    /* Camada base escura em todo o frame */
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 20, 12, 0.80) 0%,
+            /* topo — header está aqui */
+            rgba(0, 20, 12, 0.60) 35%,
+            /* centro superior */
+            rgba(0, 20, 12, 0.65) 65%,
+            /* centro inferior */
+            rgba(0, 20, 12, 0.85) 100%
+            /* rodapé */
+        );
+    z-index: 1;
 }
 
 .hero__content {
     text-align: center;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
     width: 100%;
-    margin-top: 60px; /* Compensa o header flutuante */
+    margin-top: 60px;
 }
 
 .hero__title {
@@ -326,28 +402,35 @@ button {
     line-height: 0.95;
     margin-bottom: 30px;
     text-transform: uppercase;
+    /* ✅ Sombra para destaque do título sobre qualquer frame do vídeo */
+    text-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .hero__title em {
     font-weight: 400;
     font-style: normal;
     color: var(--cor-accent);
+    /* Sombra colorida para o destaque verde */
+    text-shadow: 0 4px 30px rgba(140, 200, 80, 0.3), 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .hero__track-bar {
     max-width: 650px;
     margin: 0 auto;
-    background: #FFF;
+    background: rgba(255, 255, 255, 0.97);
     border-radius: var(--radius-pill);
     padding: 8px 8px 8px 24px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .hero__track-bar svg {
     color: var(--cor-texto-mutado);
+    flex-shrink: 0;
 }
 
 .hero__track-bar input {
@@ -358,6 +441,24 @@ button {
     outline: none;
     color: var(--cor-texto);
     background: transparent;
+}
+
+.hero__track-hint {
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero__track-hint a {
+    color: var(--cor-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.hero__track-hint a:hover {
+    color: #fff;
 }
 
 /* ================================================================
@@ -445,7 +546,7 @@ button {
 }
 
 /* ================================================================
-   SEÇÕES GERAIS E SERVIÇOS
+   SEÇÕES GERAIS
    ================================================================ */
 section {
     padding: 100px 0;
@@ -480,6 +581,9 @@ section {
     color: #FFF;
 }
 
+/* ================================================================
+   SOBRE
+   ================================================================ */
 .sobre {
     background: var(--cor-fundo-alt);
     text-align: center;
@@ -505,6 +609,98 @@ section {
     flex-wrap: wrap;
 }
 
+/* ================================================================
+   ✅ MELHORIA 10: DIFERENCIAIS
+   ================================================================ */
+.diferenciais {
+    background: var(--cor-primaria);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.diferenciais::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 70% 50%, rgba(140, 200, 80, 0.06) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.diferenciais .section-header {
+    position: relative;
+    z-index: 1;
+}
+
+.dif-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.dif-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-card);
+    padding: 40px 32px;
+    transition: var(--transition-smooth);
+}
+
+.dif-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(140, 200, 80, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dif-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(140, 200, 80, 0.15);
+    color: var(--cor-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: var(--transition-smooth);
+}
+
+.dif-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.dif-card:hover .dif-icon {
+    background: var(--cor-accent);
+    color: var(--cor-primaria);
+}
+
+.dif-card h3 {
+    font-family: var(--font-principal);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #FFF;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+.dif-card p {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.65;
+}
+
+/* ================================================================
+   SERVIÇOS
+   ================================================================ */
 .servicos {
     background: var(--cor-fundo);
 }
@@ -571,7 +767,7 @@ section {
 }
 
 /* ================================================================
-   SHOWROOM DA FROTA
+   FROTA
    ================================================================ */
 .frota {
     background: var(--cor-fundo-alt);
@@ -604,6 +800,7 @@ section {
     height: 300px;
     object-fit: cover;
     transition: var(--transition-smooth);
+    display: block;
 }
 
 .frota-card:hover .frota-img {
@@ -648,7 +845,7 @@ section {
 }
 
 /* ================================================================
-   MAPA DE ATUAÇÃO (EFEITO MODERNO E PULSO)
+   MAPA DE ATUAÇÃO
    ================================================================ */
 .mapa-atuacao {
     background: var(--cor-primaria);
@@ -660,8 +857,10 @@ section {
 .mapa-atuacao::before {
     content: '';
     position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     background: radial-gradient(circle at center, rgba(140, 200, 80, 0.05) 0%, transparent 60%);
     z-index: 0;
     pointer-events: none;
@@ -720,7 +919,6 @@ section {
     font-size: 0.9rem;
 }
 
-/* Área do Mapa e Radar */
 .mapa-atuacao__visual {
     display: flex;
     justify-content: center;
@@ -746,7 +944,6 @@ section {
     opacity: 0.8;
 }
 
-/* Pontos Animados CSS sobre o Mapa */
 .pulse-marker {
     position: absolute;
     width: 12px;
@@ -754,23 +951,43 @@ section {
     background: var(--cor-accent);
     border-radius: 50%;
     box-shadow: 0 0 0 0 rgba(140, 200, 80, 0.7);
-    animation: mapPulse 2s infinite;
 }
 
-/* Posições aproximadas para demonstração (Ajuste conforme sua imagem) */
-.p-mt { top: 50%; left: 45%; animation-delay: 0s; }
-.p-sp { top: 68%; left: 58%; animation-delay: 0.5s; }
-.p-pr { top: 70%; left: 52%; animation-delay: 1s; }
+@media (prefers-reduced-motion: no-preference) {
+    .pulse-marker {
+        animation: mapPulse 2s infinite;
+    }
+}
+
+.p-mt {
+    top: 50%;
+    left: 45%;
+    animation-delay: 0s;
+}
+
+.p-sp {
+    top: 68%;
+    left: 58%;
+    animation-delay: 0.5s;
+}
+
+.p-pr {
+    top: 70%;
+    left: 52%;
+    animation-delay: 1s;
+}
 
 @keyframes mapPulse {
     0% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(140, 200, 80, 0.7);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 15px rgba(140, 200, 80, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(140, 200, 80, 0);
@@ -778,7 +995,7 @@ section {
 }
 
 /* ================================================================
-   CALCULADORA DE FRETE
+   ✅ MELHORIA 7: CALCULADORA com disclaimer e fórmula calibrada
    ================================================================ */
 .calculadora {
     background: var(--cor-fundo);
@@ -797,11 +1014,37 @@ section {
     padding-right: 20px;
 }
 
-.calc-info p {
+.calc-info>p {
     font-family: var(--font-body);
     font-size: 1.1rem;
     color: var(--cor-texto-mutado);
     line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.calc-disclaimer {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(140, 200, 80, 0.08);
+    border: 1px solid rgba(140, 200, 80, 0.25);
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.calc-disclaimer svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--cor-accent-hover);
+    margin-top: 2px;
+}
+
+.calc-disclaimer p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--cor-texto-mutado);
+    line-height: 1.5;
 }
 
 .calc-box {
@@ -839,12 +1082,10 @@ section {
     background: var(--cor-borda);
     border-radius: 5px;
     outline: none;
-    transition: opacity .2s;
 }
 
 .calc-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
     width: 22px;
     height: 22px;
     border-radius: 50%;
@@ -891,7 +1132,7 @@ section {
 }
 
 /* ================================================================
-   COTAÇÃO
+   ✅ MELHORIA 5 e 6: COTAÇÃO com validação e máscara
    ================================================================ */
 .cotacao {
     background: var(--cor-fundo-alt);
@@ -972,7 +1213,7 @@ section {
     font-family: var(--font-body);
     padding: 14px 20px;
     border-radius: 12px;
-    border: 1px solid var(--cor-borda);
+    border: 1.5px solid var(--cor-borda);
     outline: none;
     background: #FFF;
     font-size: 1rem;
@@ -987,26 +1228,69 @@ section {
     box-shadow: 0 0 0 4px rgba(140, 200, 80, 0.1);
 }
 
-.form-group textarea {
-    resize: vertical;
+/* ✅ Estado de erro nos campos */
+.form-group input.is-invalid,
+.form-group select.is-invalid {
+    border-color: var(--cor-erro);
+    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.1);
+}
+
+.field-error {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--cor-erro);
+    min-height: 18px;
+    display: block;
+}
+
+/* ✅ Input date legível */
+input[type="date"] {
+    color: var(--cor-texto);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .form-success {
     font-family: var(--font-principal);
     font-weight: 700;
     margin-top: 20px;
-    padding: 16px;
+    padding: 20px 24px;
     background: #E8F5E9;
     color: #2E7D32;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid #A5D6A7;
+}
+
+.form-success svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.form-error-global {
+    font-family: var(--font-body);
+    margin-top: 16px;
+    padding: 16px 24px;
+    background: #FDEDEC;
+    color: var(--cor-erro);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #F1948A;
 }
 
 /* ================================================================
-   FOOTER 
+   FOOTER
    ================================================================ */
 .footer {
-    background: #001f15; /* Um verde ainda mais escuro para o footer */
+    background: #001f15;
     color: #FFF;
     padding-top: 80px;
     padding-bottom: 40px;
@@ -1040,7 +1324,7 @@ section {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #8cc850; /* Destaque no footer */
+    color: var(--cor-accent);
     margin-bottom: 20px;
 }
 
@@ -1085,26 +1369,14 @@ section {
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     flex-wrap: wrap;
     gap: 20px;
     font-family: var(--font-body);
 }
 
-.footer__social {
-    display: flex;
-    gap: 16px;
-    font-family: var(--font-principal);
-    font-weight: 700;
-}
-
-.footer__social a {
-    color: #FFF;
-}
-
 .footer__privacy {
-    color: rgba(255,255,255,0.5);
-    transition: color 0.3s;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .footer__privacy:hover {
@@ -1112,7 +1384,7 @@ section {
 }
 
 /* ================================================================
-   BOTÃO FLUTUANTE DO WHATSAPP 
+   WHATSAPP FLOAT
    ================================================================ */
 .wpp-float {
     position: fixed;
@@ -1129,7 +1401,6 @@ section {
     justify-content: center;
     box-shadow: 0 4px 15px rgba(120, 171, 68, 0.4);
     transition: transform 0.3s ease, background-color 0.3s ease;
-    text-decoration: none;
 }
 
 .wpp-float svg {
@@ -1144,19 +1415,28 @@ section {
     transform: scale(1.05);
 }
 
-.wpp-float::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 50%;
-    background-color: rgba(140, 200, 80, 0.5);
-    z-index: 1;
-    animation: wppPulse 2s infinite;
+@media (prefers-reduced-motion: no-preference) {
+    .wpp-float::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background-color: rgba(140, 200, 80, 0.5);
+        z-index: 1;
+        animation: wppPulse 2s infinite;
+    }
 }
 
 @keyframes wppPulse {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(1.6); opacity: 0; }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
 }
 
 .wpp-float__tooltip {
@@ -1208,12 +1488,12 @@ section {
 }
 
 /* ================================================================
-   MOBILE RESPONSIVO E MENU LATERAL
+   MENU OVERLAY (MOBILE)
    ================================================================ */
 .nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 31, 21, 0.8); /* Fundo verde escuro no overlay */
+    background: rgba(0, 31, 21, 0.85);
     backdrop-filter: blur(4px);
     z-index: 999;
     opacity: 0;
@@ -1226,6 +1506,9 @@ section {
     pointer-events: all;
 }
 
+/* ================================================================
+   RESPONSIVO MOBILE
+   ================================================================ */
 @media (max-width: 900px) {
 
     .header {
@@ -1243,7 +1526,7 @@ section {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: rgba(0, 50, 35, 0.98);
+        background: rgba(0, 50, 35, 0.99);
         backdrop-filter: blur(15px);
         flex-direction: column;
         padding: 100px 30px 30px;
@@ -1252,7 +1535,7 @@ section {
         z-index: 1000;
         justify-content: flex-start;
         align-items: stretch;
-        display: flex !important;
+        display: flex;
     }
 
     .nav-menu.open {
@@ -1263,11 +1546,10 @@ section {
         padding: 12px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         font-size: 1.1rem;
+        text-shadow: none;
     }
 
     .logo {
-        position: static;
-        transform: none;
         font-size: 1.4rem;
         z-index: 1001;
     }
@@ -1325,8 +1607,13 @@ section {
 
     .calculadora-wrapper,
     .frota-grid,
-    .mapa-atuacao__inner {
+    .mapa-atuacao__inner,
+    .dif-grid {
         grid-template-columns: 1fr;
+    }
+
+    .calc-info {
+        padding-right: 0;
     }
 
     .cotacao__form {
@@ -1338,6 +1625,10 @@ section {
         gap: 16px;
     }
 
+    .form-group {
+        min-width: 100%;
+    }
+
     .footer__top {
         flex-direction: column;
     }
@@ -1345,5 +1636,25 @@ section {
     .footer__bottom {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .frota-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .stat-number,
+    .stat-suffix {
+        font-size: 4rem;
+    }
+
+    .footer__links-grid {
+        flex-direction: column;
+        gap: 30px;
     }
 }
